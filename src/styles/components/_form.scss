@@ -1,0 +1,114 @@
+.form__title {
+    color:$dark;
+    padding:1rem;
+    text-align: center;
+}
+
+.error__alert {
+    background-color:$red;
+    text-align: center;
+    padding:1rem;
+    margin: 1rem 0;
+    color: $white;
+    left: 0;
+    top: 0;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content:center;
+    width: 60vw;
+    margin: auto;
+    height: 50vh;
+}
+
+label {
+    font-weight: bold;
+}
+
+.selectors__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2rem 0 4rem 0;
+}
+
+.selector__container {
+    display: flex;
+    align-items: center;
+}
+
+.title__input {
+    padding:1rem;
+    border-radius: 5px;
+    border: 1px solid $dark;
+    outline: none;
+    
+    &:focus {
+        transition: .3s all;
+        border-color: $light-grey;
+    }
+}
+
+textarea {
+    height:15vh;
+    padding:1rem;
+    border-radius: 5px 5px 0 0;
+    resize: none;
+    border: 1px solid $dark;
+    outline: none;
+
+    &:focus {
+        transition: .3s all;
+        border-color: $light-grey;
+    }
+}
+
+.create__task__btn {
+    padding:.5rem;
+    border-radius: 5px;
+    background-color: $primary2;
+    cursor: pointer;
+    border: none;
+    width: 20%;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &:hover {
+        background-color: darken($color: $primary2, $amount: 2);
+    }
+    
+    &:active {
+        background-color: darken($color: $primary2, $amount: 5);
+    }
+}
+
+@media (max-width: 1000px) {
+    .form__container {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .error__alert {
+        padding:.4rem;
+        margin: .5rem 0;
+        color: $white;
+        left: 0;
+        top: 0;
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .form__container {
+        width: 90vw;
+    }
+
+    .create__task__btn {
+        width: 50%;
+    }
+}
