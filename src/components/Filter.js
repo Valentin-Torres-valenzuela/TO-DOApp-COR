@@ -4,7 +4,7 @@ import { TareasContext } from '../context/TareasContext';
 
 const Filter = () => {
 
-    const { tareas, setFilterTasks, filterTasks} = useContext(TareasContext);
+    const { tareas, setFilterTasks} = useContext(TareasContext);
 
     const [selectedPrioridad, setSelectedPrioridad] = useState('');
     const [selectedEstado, setSelectedEstado] = useState('');

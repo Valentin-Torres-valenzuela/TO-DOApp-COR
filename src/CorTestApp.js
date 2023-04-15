@@ -10,15 +10,15 @@ function App() {
 
     const crearTarea = tarea => {
         const nuevasTareas = [...filterTasks, tarea];
-        // localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
+        localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
         guardarTareas(nuevasTareas);
         setFilterTasks(nuevasTareas);
     }
 
     const eliminarTarea = id => {
-        const nuevasTareas = tareas.filter(tarea => tarea.id !== id);
-        guardarTareas(nuevasTareas);
+        const nuevasTareas = filterTasks.filter(tarea => tarea.id !== id);
         localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
+        guardarTareas(nuevasTareas);
     }
 
     const actualizarTarea = (id, nuevaTarea) => {
