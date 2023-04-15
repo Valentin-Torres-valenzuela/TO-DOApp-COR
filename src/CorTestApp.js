@@ -37,7 +37,7 @@ function App() {
         guardarTareas(nuevasTareas);
     };
 
-    const titulo = tareas.length === 0 ? 'No tienes tareas' : 'Administra tus tareas'
+    const titulo = filterTasks.length === 0 ? 'No tienes tareas' : 'Administra tus tareas'
 
     return (
         <>
