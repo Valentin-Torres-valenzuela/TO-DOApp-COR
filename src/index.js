@@ -10,12 +10,16 @@ function Index() {
     );
 
     const [filterTasks, setFilterTasks] = useState(tareas);
+    const [selectedPrioridad, setSelectedPrioridad] = useState('');
+    const [selectedEstado, setSelectedEstado] = useState('');
 
     const crearTarea = tarea => {
         const nuevasTareas = [...filterTasks, tarea];
         localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
         guardarTareas(nuevasTareas);
         setFilterTasks(nuevasTareas);
+        setSelectedPrioridad('');
+        setSelectedEstado('');
     }
 
     const eliminarTarea = id => {
@@ -41,7 +45,7 @@ function Index() {
     };
 
     return (
-        <TareasContext.Provider value={{ tareas, guardarTareas, filterTasks, setFilterTasks, crearTarea, eliminarTarea, actualizarTarea }}>
+        <TareasContext.Provider value={{ tareas, guardarTareas, filterTasks, setFilterTasks, crearTarea, eliminarTarea, actualizarTarea, selectedPrioridad, setSelectedPrioridad, selectedEstado, setSelectedEstado }}>
             <CorTestApp />
         </TareasContext.Provider>
     );

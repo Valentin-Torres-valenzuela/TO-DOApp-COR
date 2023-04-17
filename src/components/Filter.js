@@ -6,7 +6,6 @@ const Filter = () => {
 
     const { tareas, setFilterTasks, selectedPrioridad, setSelectedPrioridad, selectedEstado, setSelectedEstado} = useContext(TareasContext);
 
-
     useEffect(() => {
         if (selectedPrioridad !== '' || selectedEstado !== '') {
             const filteredTareas = tareas.filter((tarea) => {
