@@ -6,36 +6,7 @@ import { TareasContext } from "./context/TareasContext";
 
 function App() {
 
-    const { tareas, guardarTareas, filterTasks, setFilterTasks } = useContext(TareasContext);
-
-    const crearTarea = tarea => {
-        const nuevasTareas = [...filterTasks, tarea];
-        localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
-        guardarTareas(nuevasTareas);
-        setFilterTasks(nuevasTareas);
-    }
-
-    const eliminarTarea = id => {
-        const nuevasTareas = filterTasks.filter(tarea => tarea.id !== id);
-        localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
-        guardarTareas(nuevasTareas);
-    }
-
-    const actualizarTarea = (id, nuevaTarea) => {
-        console.log(nuevaTarea)
-        const nuevasTareas = tareas.map(tarea => {
-            if (tarea.id === id) {
-                return {
-                    ...tarea,
-                    ...nuevaTarea,
-                };
-            }
-            return tarea;
-            });
-
-        localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
-        guardarTareas(nuevasTareas);
-    };
+    const { tareas, guardarTareas, filterTasks, crearTarea, eliminarTarea, actualizarTarea } = useContext(TareasContext);
 
     const titulo = filterTasks.length === 0 ? 'No tienes tareas' : 'Administra tus tareas'
 
