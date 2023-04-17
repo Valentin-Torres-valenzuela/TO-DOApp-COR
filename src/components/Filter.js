@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { TareasContext } from '../context/TareasContext';
 
@@ -9,9 +9,22 @@ const Filter = () => {
     const [selectedPrioridad, setSelectedPrioridad] = useState('');
     const [selectedEstado, setSelectedEstado] = useState('');
 
-    if (selectedPrioridad === '' && selectedEstado === '') {
-        setFilterTasks(tareas);
-    }
+    useEffect(() => {
+        if (selectedPrioridad !== '' || selectedEstado !== '') {
+            const filteredTareas = tareas.filter((tarea) => {
+                if (selectedPrioridad !== '' && selectedEstado !== '') {
+                    return tarea.prioridad === selectedPrioridad && tarea.estado === selectedEstado;
+                } else if (selectedPrioridad !== '') {
+                    return tarea.prioridad === selectedPrioridad;
+                } else {
+                    return tarea.estado === selectedEstado;
+                }
+            });
+            setFilterTasks(filteredTareas);
+        } else {
+            setFilterTasks(tareas);
+        }
+    }, [selectedPrioridad, selectedEstado, tareas, setFilterTasks]);
 
     return (
         <>
@@ -25,15 +38,9 @@ const Filter = () => {
                             className="selector"
                             onChange={(e) => {
                                 const {value} = e.target
-                                    setSelectedPrioridad(value);
-                                    if (selectedEstado !== '') {
-                                        const filteredTareas = tareas.filter((tarea) => tarea.prioridad === value && tarea.estado === selectedEstado);
-                                        setFilterTasks(filteredTareas);
-                                    } else {
-                                        const filteredTareas = tareas.filter((tarea) => tarea.prioridad === value);
-                                        setFilterTasks(filteredTareas);
-                                    }
-                                }}
+                                setSelectedPrioridad(value);
+                            }}
+                            value={selectedPrioridad}
                         >
                             <option value="">Seleccionar</option>
                             <option value="Baja">Baja</option>
@@ -49,14 +56,8 @@ const Filter = () => {
                             onChange={(e) => {
                                 const {value} = e.target
                                 setSelectedEstado(value);
-                                if (selectedPrioridad !== '') {
-                                    const filteredTareas = tareas.filter((tarea) => tarea.estado === value && tarea.prioridad === selectedPrioridad);
-                                    setFilterTasks(filteredTareas);
-                                } else {
-                                    const filteredTareas = tareas.filter((tarea) => tarea.estado === value);
-                                    setFilterTasks(filteredTareas);
-                                }
                             }}
+                            value={selectedEstado}
                         >
                             <option value="">Seleccionar</option>
                             <option value="Nuevo">Nuevo</option>
