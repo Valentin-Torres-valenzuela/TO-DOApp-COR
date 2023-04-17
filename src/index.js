@@ -23,7 +23,7 @@ function Index() {
     }
 
     const eliminarTarea = id => {
-        const nuevasTareas = filterTasks.filter(tarea => tarea.id !== id);
+        const nuevasTareas = tareas.filter(tarea => tarea.id !== id);
         localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
         guardarTareas(nuevasTareas);
     }
