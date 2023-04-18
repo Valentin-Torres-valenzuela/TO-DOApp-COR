@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import PropTypes from 'prop-types';
+import { TareasContext } from '../context/TareasContext';
 
 const Formulario = ({crearTarea}) => {
+
+    const { setSelectedPrioridad, setSelectedEstado } = useContext(TareasContext);
 
     const [tarea, setTarea] = useState({
         titulo: '',
@@ -33,6 +36,9 @@ const Formulario = ({crearTarea}) => {
 
         tarea.id = Date.now();
         
+        setSelectedPrioridad('');
+        setSelectedEstado('');
+        
         crearTarea(tarea);
 
         setTarea({
@@ -41,6 +47,7 @@ const Formulario = ({crearTarea}) => {
             estado: '',
             descripcion: ''
         })
+
     }
     
     return (

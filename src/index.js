@@ -14,12 +14,10 @@ function Index() {
     const [selectedEstado, setSelectedEstado] = useState('');
 
     const crearTarea = tarea => {
-        const nuevasTareas = [...filterTasks, tarea];
+        const nuevasTareas = [...tareas, tarea];
         localStorage.setItem("tareas", JSON.stringify(nuevasTareas));
         guardarTareas(nuevasTareas);
         setFilterTasks(nuevasTareas);
-        setSelectedPrioridad('');
-        setSelectedEstado('');
     }
 
     const eliminarTarea = id => {
